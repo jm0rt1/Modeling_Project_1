@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import datetime
+import enum
 
 
 @dataclass
@@ -28,3 +29,25 @@ class TeamStats:
     fourth_down_conver: int
     time_poss: int
     score: int
+
+    class keys(str, enum.Enum):
+        STATIDCODE = "statIdCode"
+        GAMECODE = "gameCode"
+        TEAMCODE = "teamCode"
+        GAMEDATE = "gameDate"
+        RUSHYDS = "rushYds"
+        RUSHATT = "rushAtt"
+        PASSYDS = "passYds"
+        PASSATT = "passAtt"
+        PASSCOMP = "passComp"
+        PENALTIES = "penalties"
+        PENALTYDS = "penaltYds"
+        FUMBLESLOST = "fumblesLost"
+        INTERCEPTIONSTHROWN = "interceptionsThrown"
+        FIRSTDOWNS = "firstDowns"
+        THRIDDOWNATT = "thridDownAtt"
+        THIRDDOWNCONVER = "thirdDownConver"
+        FOURTHDOWNATT = "fourthDownAtt"
+        FOURTHDOWNCONVER = "fourthDownConver"
+        TIMEPOSS = "timePoss"
+        SCORE = "score"
