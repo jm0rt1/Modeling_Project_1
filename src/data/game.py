@@ -20,11 +20,12 @@ class Game:
 
     class Keys(str, enum.Enum):
         NEUTRAL = "neutral"
-        VISTEAMNAME = "visTeamName"
-        VISSTATS = "visStats"
-        HOMESTATS = "homeStats"
-        ISFINAL = "isFinal"
+        VIS_TEAM_NAME = "visTeamName"
+        VIS_STATS = "visStats"
+        HOME_STATS = "homeStats"
+        IS_FINAL = "isFinal"
         DATE = "date"
+        HOME_TEAM_NAME = "homeTeamName"
 
     def print(self, ):
         pass
