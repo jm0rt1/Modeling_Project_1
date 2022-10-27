@@ -596,13 +596,30 @@
 											"height": 13,
 											"text": "+print()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGEEgqYSFWgXM8=",
+											"_parent": {
+												"$ref": "AAAAAAGEBfJ8lKOr0xg="
+											},
+											"model": {
+												"$ref": "AAAAAAGEEgqYNlWdrFU="
+											},
+											"font": "Arial;13;0",
+											"left": 989,
+											"top": 1520,
+											"width": 150,
+											"height": 13,
+											"text": "+from_dict(a: dict)",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 984,
 									"top": 1500,
 									"width": 160,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1119,11 +1136,30 @@
 									"model": {
 										"$ref": "AAAAAAGEBfUza6P3gtw="
 									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGEEgsn0VhtR2s=",
+											"_parent": {
+												"$ref": "AAAAAAGEBfUzbKQAjS4="
+											},
+											"model": {
+												"$ref": "AAAAAAGEEgsnx1hqggQ="
+											},
+											"font": "Arial;13;0",
+											"left": 1309,
+											"top": 1626,
+											"width": 158,
+											"height": 13,
+											"text": "+from_dict(a: dict)",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"left": 1304,
 									"top": 1621,
 									"width": 168,
-									"height": 10
+									"height": 23
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -3257,6 +3293,25 @@
 										"$ref": "AAAAAAGEBfJ8k6OiwVs="
 									},
 									"name": "print"
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGEEgqYNlWdrFU=",
+									"_parent": {
+										"$ref": "AAAAAAGEBfJ8k6OiwVs="
+									},
+									"name": "from_dict",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGEEgrE9FYrJLo=",
+											"_parent": {
+												"$ref": "AAAAAAGEEgqYNlWdrFU="
+											},
+											"name": "a",
+											"type": "dict"
+										}
+									]
 								}
 							]
 						},
@@ -3509,6 +3564,27 @@
 									},
 									"name": "score",
 									"type": ""
+								}
+							],
+							"operations": [
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGEEgsnx1hqggQ=",
+									"_parent": {
+										"$ref": "AAAAAAGEBfUza6P3gtw="
+									},
+									"name": "from_dict",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGEEgs/C1lh9A8=",
+											"_parent": {
+												"$ref": "AAAAAAGEEgsnx1hqggQ="
+											},
+											"name": "a",
+											"type": "dict"
+										}
+									]
 								}
 							]
 						}
