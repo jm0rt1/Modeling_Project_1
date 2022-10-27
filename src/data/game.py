@@ -41,5 +41,10 @@ class Game:
                    vis_stats)
         return game
 
+    def to_dict(self) -> dict[Any, Any]:
+        data =
+        data = self.__dict__
+        return data
+
     def print(self, ):
         pass
