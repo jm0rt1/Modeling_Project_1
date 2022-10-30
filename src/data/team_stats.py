@@ -8,28 +8,28 @@ import enum
 from typing import Any
 
 
-@dataclass
 class TeamStats:
-    stat_id_code: str
-    game_code: str
-    team_code: int
-    game_date: datetime.date
-    rush_yds: int
-    rush_att: int
-    pass_yds: int
-    pass_att: int
-    pass_comp: int
-    penalties: int
-    penalt_yds: int
-    fumbles_lost: int
-    interceptions_thrown: int
-    first_downs: int
-    thrid_down_att: int
-    third_down_conver: int
-    fourth_down_att: int
-    fourth_down_conver: int
-    time_poss: int
-    score: int
+    def __init__(self) -> None:
+        self.statIdCode: str
+        self.gameCode: str
+        self.teamCode: int
+        self.gameDate: datetime.date
+        self.rushYds: int
+        self.rushAtt: int
+        self.passYds: int
+        self.passAtt: int
+        self.passComp: int
+        self.penalties: int
+        self.penaltYds: int
+        self.fumblesLost: int
+        self.interceptionsThrown: int
+        self.firstDowns: int
+        self.thridDownAtt: int
+        self.thirdDownConver: int
+        self.fourthDownAtt: int
+        self.fourthDownConver: int
+        self.timePoss: int
+        self.score: int
 
     class Keys(str, enum.Enum):
         """
@@ -58,13 +58,9 @@ class TeamStats:
 
     @classmethod
     def from_dict(cls, a: dict[Any, Any]):
-        keys = list(cls.Keys)
-        return cls(a[keys[0]], a[keys[1]], a[keys[2]],
-                   a[keys[3]], a[keys[4]],
-                   a[keys[5]],
-                   a[keys[6]], a[keys[7]],
-                   a[keys[8]], a[keys[9]], a[keys[10]],
-                   a[keys[11]], a[keys[12]],
-                   a[keys[13]], a[keys[14]], a[keys[15]],
-                   a[keys[16]], a[keys[17]],
-                   a[keys[18]], a[keys[19]])
+        team_stats = cls()
+        team_stats.__dict__ = a
+        return team_stats
+
+    def to_dict(self):
+        return self.__dict__

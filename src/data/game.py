@@ -2,22 +2,27 @@
 from __future__ import annotations
 
 
-from dataclasses import dataclass
 import datetime
 import enum
 from typing import Any
 from src.data.team_stats import TeamStats
 
 
-@dataclass
+class Games():
+    def __init__(self):
+        pass
+
+
 class Game:
-    neutral: bool
-    vis_team_name: str
-    home_team_name: str
-    is_final: bool
-    date: datetime.date
-    home_stats: TeamStats
-    vis_stats: TeamStats
+    def __init__(self) -> None:
+
+        self.neutral: bool
+        self.visTeamName: str
+        self.visStats: str
+        self.homeStats: bool
+        self.isFinal: datetime.date
+        self.date: TeamStats
+        self.homeTeamName: TeamStats
 
     class Keys(str, enum.Enum):
         NEUTRAL = "neutral"
@@ -28,22 +33,21 @@ class Game:
         DATE = "date"
         HOME_TEAM_NAME = "homeTeamName"
 
+    def __str__(self):
+        return str(self.__dict__)
+
     @classmethod
     def from_dict(cls, a: dict[Any, Any]):
-        home_stats = TeamStats.from_dict(a[Game.Keys.HOME_STATS])
-        vis_stats = TeamStats.from_dict(a[Game.Keys.VIS_STATS])
-
-        game = cls(a[Game.Keys.NEUTRAL], a[Game.Keys.VIS_TEAM_NAME],
-                   a[Game.Keys.HOME_TEAM_NAME],
-                   a[Game.Keys.IS_FINAL],
-                   a[Game.Keys.DATE],
-                   home_stats,
-                   vis_stats)
+        a[Game.Keys.HOME_STATS] = TeamStats.from_dict(a[Game.Keys.HOME_STATS])
+        a[Game.Keys.VIS_STATS] = TeamStats.from_dict(a[Game.Keys.VIS_STATS])
+        game = cls()
+        game.__dict__ = a
         return game
 
     def to_dict(self) -> dict[Any, Any]:
-        data =
         data = self.__dict__
+        data[Game.Keys.HOME_STATS] = data[Game.Keys.HOME_STATS].to_dict()
+        data[Game.Keys.VIS_STATS] = data[Game.Keys.VIS_STATS].to_dict()
         return data
 
     def print(self, ):

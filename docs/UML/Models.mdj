@@ -2940,12 +2940,12 @@
 										"$ref": "AAAAAAGEBiTrlWaRlB8="
 									},
 									"font": "Arial;13;0",
-									"left": 1241,
+									"left": 1215,
 									"top": 1416,
 									"width": 74.79443359375,
 									"height": 13,
-									"alpha": 0.5235987755982988,
-									"distance": 30,
+									"alpha": 0.2629947799567902,
+									"distance": 53.85164807134504,
 									"hostEdge": {
 										"$ref": "AAAAAAGEBiTrlWaULJw="
 									},
