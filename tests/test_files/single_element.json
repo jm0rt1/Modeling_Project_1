@@ -1,0 +1,53 @@
+[
+    {
+        "neutral": false,
+        "visTeamName": "Cardinals",
+        "visStats": {
+            "statIdCode": "10001002620200913",
+            "gameCode": "0001002620200913",
+            "teamCode": 1,
+            "gameDate": "Sep 13, 2020",
+            "rushYds": 180,
+            "rushAtt": 36,
+            "passYds": 224,
+            "passAtt": 40,
+            "passComp": 26,
+            "penalties": 9,
+            "penaltYds": 102,
+            "fumblesLost": 0,
+            "interceptionsThrown": 1,
+            "firstDowns": 29,
+            "thridDownAtt": 14,
+            "thirdDownConver": 7,
+            "fourthDownAtt": 0,
+            "fourthDownConver": 0,
+            "timePoss": 1886,
+            "score": 24
+        },
+        "homeTeamName": "49ers",
+        "homeStats": {
+            "statIdCode": "260001002620200913",
+            "gameCode": "0001002620200913",
+            "teamCode": 26,
+            "gameDate": "Sep 13, 2020",
+            "rushYds": 123,
+            "rushAtt": 25,
+            "passYds": 243,
+            "passAtt": 33,
+            "passComp": 19,
+            "penalties": 5,
+            "penaltYds": 53,
+            "fumblesLost": 0,
+            "interceptionsThrown": 0,
+            "firstDowns": 18,
+            "thridDownAtt": 11,
+            "thirdDownConver": 2,
+            "fourthDownAtt": 2,
+            "fourthDownConver": 0,
+            "timePoss": 1714,
+            "score": 20
+        },
+        "isFinal": false,
+        "date": "2020-09-13"
+    }
+]

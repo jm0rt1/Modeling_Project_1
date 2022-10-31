@@ -8,7 +8,7 @@ from src.json_49ers_serdes.serializer import Serializer
 from tests.json_49ers_serdes.strings import ORIGINAL_GAMES_STRING
 
 ORIGNAL_PATH = Path("./tests/test_files/ORIGINAL.json")
-
+SINGLE_ELEMENT_PATH = Path("./tests/test_files/single_element.json")
 
 os.chmod(ORIGNAL_PATH, S_IREAD | S_IRGRP | S_IROTH)
 
@@ -31,3 +31,7 @@ class TestDeserializer(unittest.TestCase):
         actual_str = Serializer().to_string(games)
         self.assertEqual(ORIGINAL_GAMES_STRING, actual_str)
         pass
+
+    def test_single_element(self):
+        games = des.Deserializer().from_file(SINGLE_ELEMENT_PATH)
+        
