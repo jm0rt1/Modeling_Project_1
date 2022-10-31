@@ -8,6 +8,11 @@ from src.data.team_stats import TeamStats
 
 
 class Game:
+
+    """
+    Will not be writing getters/setters for this class to reduce clutter. Utilize dot operator instead
+    """
+
     def __init__(self) -> None:
 
         self.neutral: bool
@@ -19,6 +24,9 @@ class Game:
         self.homeTeamName: str
 
     class Keys(str, enum.Enum):
+        """
+        JSON Data keys
+        """
         NEUTRAL = "neutral"
         VIS_TEAM_NAME = "visTeamName"
         VIS_STATS = "visStats"
@@ -35,6 +43,21 @@ class Game:
                       isFinal: bool,
                       date: str,
                       homeTeamName: str):
+        """
+        Alternative constructor
+
+        Args:
+            neutral (bool): neutral?
+            visTeamName (str): visiting team name
+            visStats (TeamStats): stats for visiting team
+            homeStats (TeamStats): stats for home team
+            isFinal (bool): final?
+            date (str): date of the game
+            homeTeamName (str): home team name
+
+        Returns:
+            Game: game from raw
+        """
 
         g = cls()
         g.neutral = neutral
@@ -62,6 +85,12 @@ class Game:
 
     @classmethod
     def from_console_input(cls):
+        """
+        Ask the user for the input data from the console, very rudimentary/no error checking
+
+        Returns:
+            TeamStats: generated from user input
+        """
         neutral = bool(input("(True/False) neutral "))
         visTeamName = input("(str) visTeamName = ")
 
@@ -82,6 +111,9 @@ class Game:
                                  homeTeamName)
 
     def __eq__(self, __o: object) -> bool:
+        """
+        Check equality of two games, mostly for unittests
+        """
         if not isinstance(__o, Game):
             raise RuntimeError("Cannot compare a unknown object to type Game")
         for key in __o.__dict__.keys():
@@ -102,12 +134,24 @@ class Game:
         return True
 
     def to_dict(self) -> dict[Any, Any]:
+        """
+        Convert this game into a dictionary
+        Sub-objects also will be turned into dictionaries
+
+        Returns:
+            dict[Any, Any]: Dictionary output
+        """
+
         data = self.__dict__
         data[Game.Keys.HOME_STATS] = data[Game.Keys.HOME_STATS].to_dict()
         data[Game.Keys.VIS_STATS] = data[Game.Keys.VIS_STATS].to_dict()
         return data
 
     def print(self, ):
+        """
+        Print this game to the console in a user friendly mannner
+        """
+
         friendly_string = f" \n\n-------------------------------\n\n"
 
         friendly_string += f"{self.visTeamName}\tAt\t{self.homeTeamName}  on {self.date}\n\n"
