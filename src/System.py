@@ -53,6 +53,7 @@ class System:
                 valid_selection = False
             else:
                 valid_selection = True
+
         self.games[sel_int].print()
 
 

@@ -1,3 +1,4 @@
+from src.data.game import Game
 from src.system import System
 
 if __name__ == "__main__":
@@ -17,7 +18,7 @@ if __name__ == "__main__":
         elif a == "2":
             system.save_data()
         elif a == "3":
-            system.add_game()
+            system.add_game(Game.from_console_input())
         elif a == "4":
             system.print_games()
     pass
