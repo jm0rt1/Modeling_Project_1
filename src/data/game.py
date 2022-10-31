@@ -87,7 +87,9 @@ class Game:
         return data
 
     def print(self, ):
-        friendly_string = f"{self.visTeamName}\tAt\t{self.homeTeamName}  on {self.date}\n\n"
+        friendly_string = f" \n\n-------------------------------\n\n"
+
+        friendly_string += f"{self.visTeamName}\tAt\t{self.homeTeamName}  on {self.date}\n\n"
         friendly_string += f"Stats by team (away - home):\n\n"
         friendly_string += f"Score:\t\t\t  {self.visStats.score} - {self.homeStats.score}\n"
         friendly_string += f"Possession Time:\t  {self.visStats.timePoss} - {self.homeStats.timePoss}\n"
@@ -114,5 +116,6 @@ class Game:
         friendly_string += f" -------------------------------\n\n"
         friendly_string += f"Neutral:\t {self.neutral}\n"
         friendly_string += f"Is Final:\t {self.isFinal}\n"
+        friendly_string += f" -------------------------------\n\n"
 
         print(friendly_string)
