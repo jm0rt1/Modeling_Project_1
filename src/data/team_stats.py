@@ -16,7 +16,7 @@ class TeamStats:
         self.statIdCode: str
         self.gameCode: str
         self.teamCode: int
-        self.gameDate: datetime.date
+        self.gameDate: str
         self.rushYds: int
         self.rushAtt: int
         self.passYds: int
@@ -72,7 +72,7 @@ class TeamStats:
     def from_raw_data(cls, statIdCode: str,
                       gameCode: str,
                       teamCode: int,
-                      gameDate: datetime.date,
+                      gameDate: str,
                       rushYds: int,
                       rushAtt: int,
                       passYds: int,
@@ -112,3 +112,46 @@ class TeamStats:
         ts.timePoss = timePoss
         ts.score = score
         return ts
+
+    @classmethod
+    def from_console_input(cls) -> TeamStats:
+        statIdCode = input("(str) statIdCode =")
+        gameCode = input("(str) gameCode =")
+        teamCode = int(input("(int) teamCode ="))
+        gameDate = input("(str) gameDate =")
+        rushYds = int(input("(int) rushYds ="))
+        rushAtt = int(input("(int) rushAtt ="))
+        passYds = int(input("(int) passYds ="))
+        passAtt = int(input("(int) passAtt ="))
+        passComp = int(input("(int) passComp ="))
+        penalties = int(input("(int) penalties ="))
+        penaltYds = int(input("(int) penaltYds ="))
+        fumblesLost = int(input("(int) fumblesLost ="))
+        interceptionsThrown = int(input("(int) interceptionsThrown ="))
+        firstDowns = int(input("(int) firstDowns ="))
+        thridDownAtt = int(input("(int) thridDownAtt ="))
+        thirdDownConver = int(input("(int) thirdDownConver ="))
+        fourthDownAtt = int(input("(int) fourthDownAtt ="))
+        fourthDownConver = int(input("(int) fourthDownConver ="))
+        timePoss = int(input("(int) timePoss ="))
+        score = int(input("(int) score ="))
+        return cls.from_raw_data(statIdCode,
+                                 gameCode,
+                                 teamCode,
+                                 gameDate,
+                                 rushYds,
+                                 rushAtt,
+                                 passYds,
+                                 passAtt,
+                                 passComp,
+                                 penalties,
+                                 penaltYds,
+                                 fumblesLost,
+                                 interceptionsThrown,
+                                 firstDowns,
+                                 thridDownAtt,
+                                 thirdDownConver,
+                                 fourthDownAtt,
+                                 fourthDownConver,
+                                 timePoss,
+                                 score)

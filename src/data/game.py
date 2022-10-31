@@ -60,6 +60,27 @@ class Game:
         game.__dict__ = a
         return game
 
+    @classmethod
+    def from_console_input(cls):
+        neutral = bool(input("(True/False) neutral "))
+        visTeamName = input("(str) visTeamName = ")
+
+        print("\n\n-- VISITING TEAM STATS --")
+        visStats = TeamStats.from_console_input()
+        print("\n\n-- HOME TEAM STATS --")
+
+        homeStats = TeamStats.from_console_input()
+        isFinal = bool(input("(true/false) isFinal = "))
+        date = input("(str) date (e.g. Jan 3, 2021) = ")
+        homeTeamName = input("(str) homeTeamName = ")
+        return cls.from_raw_data(neutral,
+                                 visTeamName,
+                                 visStats,
+                                 homeStats,
+                                 isFinal,
+                                 date,
+                                 homeTeamName)
+
     def __eq__(self, __o: object) -> bool:
         if not isinstance(__o, Game):
             raise RuntimeError("Cannot compare a unknown object to type Game")
