@@ -1,6 +1,6 @@
 
 from __future__ import annotations
-from copy import copy, deepcopy
+from copy import deepcopy
 import json
 from pathlib import Path
 from src.data.game import Game
@@ -19,9 +19,11 @@ class Serializer:
             game_dict = game.to_dict()
             games_dicts_list.append(game_dict)
 
-        string = json.dumps(games_dicts_list)
-
+        string = json.dumps(games_dicts_list, indent=4)
         return string
 
-    def to_file(self, path: Path):
-        pass
+    def to_file(self, games: list[Game], path: Path):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        json_str = self.to_string(games)
+        with open(path, "w") as fp:
+            fp.write(json_str)
