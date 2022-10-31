@@ -9,6 +9,10 @@ from typing import Any
 
 
 class TeamStats:
+    """
+    Yes, "thrid" is a typo in the JSON file so I kept the typo.
+    """
+
     def __init__(self) -> None:
         self.statIdCode: str
         self.gameCode: str
@@ -64,3 +68,48 @@ class TeamStats:
 
     def to_dict(self):
         return self.__dict__
+
+    @classmethod
+    def from_raw_data(cls, statIdCode: str,
+                      gameCode: str,
+                      teamCode: int,
+                      gameDate: datetime.date,
+                      rushYds: int,
+                      rushAtt: int,
+                      passYds: int,
+                      passAtt: int,
+                      passComp: int,
+                      penalties: int,
+                      penaltYds: int,
+                      fumblesLost: int,
+                      interceptionsThrown: int,
+                      firstDowns: int,
+                      thridDownAtt: int,
+                      thirdDownConver: int,
+                      fourthDownAtt: int,
+                      fourthDownConver: int,
+                      timePoss: int,
+                      score: int):
+
+        ts = cls()
+        ts.statIdCode = statIdCode
+        ts.gameCode = gameCode
+        ts.teamCode = teamCode
+        ts.gameDate = gameDate
+        ts.rushYds = rushYds
+        ts.rushAtt = rushAtt
+        ts.passYds = passYds
+        ts.passAtt = passAtt
+        ts.passComp = passComp
+        ts.penalties = penalties
+        ts.penaltYds = penaltYds
+        ts.fumblesLost = fumblesLost
+        ts.interceptionsThrown = interceptionsThrown
+        ts.firstDowns = firstDowns
+        ts.thridDownAtt = thridDownAtt
+        ts.thirdDownConver = thirdDownConver
+        ts.fourthDownAtt = fourthDownAtt
+        ts.fourthDownConver = fourthDownConver
+        ts.timePoss = timePoss
+        ts.score = score
+        return ts
