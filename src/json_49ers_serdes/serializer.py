@@ -17,7 +17,7 @@ class Serializer:
 
         for game in g:
             game_dict = game.to_dict()
-            games_dicts_list.append(game_dict)
+            games_dicts_list.append(game_dict)  # type:ignore
 
         string = json.dumps(games_dicts_list, indent=4)
         return string
