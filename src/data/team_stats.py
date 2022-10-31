@@ -84,50 +84,37 @@ class TeamStats:
         return self.__dict__
 
     @classmethod
-    def from_raw_data(cls, statIdCode: str,
-                      gameCode: str,
-                      teamCode: int,
-                      gameDate: str,
-                      rushYds: int,
-                      rushAtt: int,
-                      passYds: int,
-                      passAtt: int,
-                      passComp: int,
-                      penalties: int,
-                      penaltYds: int,
-                      fumblesLost: int,
-                      interceptionsThrown: int,
-                      firstDowns: int,
-                      thridDownAtt: int,
-                      thirdDownConver: int,
-                      fourthDownAtt: int,
-                      fourthDownConver: int,
-                      timePoss: int,
-                      score: int):
+    def from_raw_data(cls, statIdCode: str, gameCode: str,
+                      teamCode: int, gameDate: str, rushYds: int,
+                      rushAtt: int, passYds: int, passAtt: int,
+                      passComp: int, penalties: int, penaltYds: int,
+                      fumblesLost: int, interceptionsThrown: int, firstDowns: int,
+                      thridDownAtt: int, thirdDownConver: int, fourthDownAtt: int,
+                      fourthDownConver: int, timePoss: int, score: int):
         """
         Alternative constructor
 
         Args:
-            statIdCode (str): _description_
-            gameCode (str): _description_
-            teamCode (int): _description_
-            gameDate (str): _description_
-            rushYds (int): _description_
-            rushAtt (int): _description_
-            passYds (int): _description_
-            passAtt (int): _description_
-            passComp (int): _description_
-            penalties (int): _description_
-            penaltYds (int): _description_
-            fumblesLost (int): _description_
-            interceptionsThrown (int): _description_
-            firstDowns (int): _description_
-            thridDownAtt (int): _description_
-            thirdDownConver (int): _description_
-            fourthDownAtt (int): _description_
-            fourthDownConver (int): _description_
-            timePoss (int): _description_
-            score (int): _description_
+            statIdCode (str): statIdCode input value
+            gameCode (str): gameCode input value
+            teamCode (int): teamCode input value
+            gameDate (str): gameDate input value
+            rushYds (int): rushYds input value
+            rushAtt (int): rushAtt input value
+            passYds (int): passYds input value
+            passAtt (int): passAtt input value
+            passComp (int): passComp input value
+            penalties (int): penalties input value
+            penaltYds (int): penaltYds input value
+            fumblesLost (int): fumblesLost input value
+            interceptionsThrown (int): interceptionsThrown input value
+            firstDowns (int): firstDowns input value
+            thridDownAtt (int): thridDownAtt input value
+            thirdDownConver (int): thirdDownConver input value
+            fourthDownAtt (int): fourthDownAtt input value
+            fourthDownConver (int): fourthDownConver input value
+            timePoss (int): timePoss input value
+            score (int): score input value
 
         Returns:
             TeamStats: from raw data
