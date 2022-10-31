@@ -28,6 +28,25 @@ class Game:
         HOME_TEAM_NAME = "homeTeamName"
 
     @classmethod
+    def from_raw_data(cls, neutral: bool,
+                      visTeamName: str,
+                      visStats: TeamStats,
+                      homeStats: TeamStats,
+                      isFinal: bool,
+                      date: str,
+                      homeTeamName: str):
+
+        g = cls()
+        g.neutral = neutral
+        g.visTeamName = visTeamName
+        g.visStats = visStats
+        g.homeStats = homeStats
+        g.isFinal = isFinal
+        g.date = date
+        g.homeTeamName = homeTeamName
+        return g
+
+    @classmethod
     def from_dict(cls, a: dict[Any, Any]):
         """ 
         Uses the 'payload method' to quickly load all of the data from the JSON dict into this object.
