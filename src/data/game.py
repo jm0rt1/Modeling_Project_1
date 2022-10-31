@@ -3,6 +3,7 @@ from __future__ import annotations
 
 
 import enum
+from typing import Any
 from src.data.team_stats import TeamStats
 
 
@@ -30,9 +31,6 @@ class Game:
         IS_FINAL = "isFinal"
         DATE = "date"
         HOME_TEAM_NAME = "homeTeamName"
-
-    def __str__(self):
-        pass
 
     @classmethod
     def from_dict(cls, a: dict[Any, Any]):
