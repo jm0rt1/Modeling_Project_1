@@ -19,12 +19,12 @@ class System:
     def __init__(self, games: Optional[list[Game]] = None):
         self.games: Optional[list[Game]] = games
 
-    def load_data(self, ):
+    def load_data(self):
         path = choose_file_open()
         self.games = Deserializer().from_file(path)
         print(f"{len(self.games)} games loaded")
 
-    def save_data(self, ):
+    def save_data(self):
         if self.games is None:
             print("No Games Loaded...")
             return
@@ -47,7 +47,7 @@ class System:
             self.games = []
         self.games.append(game)
 
-    def print_games(self, ):
+    def print_games(self):
         if self.games is None:
             print("No Games Loaded...")
             return
