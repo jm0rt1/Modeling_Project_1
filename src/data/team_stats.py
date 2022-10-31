@@ -2,14 +2,14 @@
 from __future__ import annotations
 
 
-import datetime
 import enum
 from typing import Any
 
 
 class TeamStats:
     """
-    Yes, "thrid" is a typo in the JSON file so I kept the typo.
+    Yes, "thridDownAtt" is a typo in the JSON file so I kept the typo consistent.
+    Will not be writing getters/setters for this class to reduce clutter. Utilize dot operator instead
     """
 
     def __init__(self) -> None:
@@ -36,7 +36,7 @@ class TeamStats:
 
     class Keys(str, enum.Enum):
         """
-        Needs to be in the same order as the constructor
+        JSON Keys
         """
         STAT_ID_CODE = "statIdCode"
         GAME_CODE = "gameCode"
@@ -61,11 +61,26 @@ class TeamStats:
 
     @classmethod
     def from_dict(cls, a: dict[Any, Any]):
+        """
+        Generate a TeamStats from a dictionary using the payload method
+
+        Args:
+            a (dict[Any, Any]): dictionary input
+
+        Returns:
+            TeamStats: generated from dict
+        """
         team_stats = cls()
         team_stats.__dict__ = a
         return team_stats
 
     def to_dict(self):
+        """
+        Convert this TeamStats into a dictionary
+
+        Returns:
+            dict: dictionary output
+        """
         return self.__dict__
 
     @classmethod
@@ -89,6 +104,34 @@ class TeamStats:
                       fourthDownConver: int,
                       timePoss: int,
                       score: int):
+        """
+        Alternative constructor
+
+        Args:
+            statIdCode (str): _description_
+            gameCode (str): _description_
+            teamCode (int): _description_
+            gameDate (str): _description_
+            rushYds (int): _description_
+            rushAtt (int): _description_
+            passYds (int): _description_
+            passAtt (int): _description_
+            passComp (int): _description_
+            penalties (int): _description_
+            penaltYds (int): _description_
+            fumblesLost (int): _description_
+            interceptionsThrown (int): _description_
+            firstDowns (int): _description_
+            thridDownAtt (int): _description_
+            thirdDownConver (int): _description_
+            fourthDownAtt (int): _description_
+            fourthDownConver (int): _description_
+            timePoss (int): _description_
+            score (int): _description_
+
+        Returns:
+            TeamStats: from raw data
+        """
 
         ts = cls()
         ts.statIdCode = statIdCode
@@ -115,6 +158,12 @@ class TeamStats:
 
     @classmethod
     def from_console_input(cls) -> TeamStats:
+        """
+        Ask the user for the input data from the console, very rudimentary/no error checking
+
+        Returns:
+            TeamStats: generated from user input
+        """
         statIdCode = input("(str) statIdCode =")
         gameCode = input("(str) gameCode =")
         teamCode = int(input("(int) teamCode ="))
