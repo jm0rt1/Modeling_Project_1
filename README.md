@@ -4,11 +4,13 @@
 This project was developed on M1 (Arm64 based) based Mac, using Microsoft's Visual Studio Code Version: 1.72.0. The intention is to be compatible with any system through Python's Multiplatform Nature, however, this project will only be tested on Windows 10 and the latest MacOS version.
 
 ## Scope:
-    - Definitions
-    - Prerequisites
-    - Initializing the Virtual Environment
-    - Running The Unit Tests
-    - Running The Program From a Shell
+    1. Definitions
+    2. Prerequisites
+    3. Initializing the Virtual Environment
+    4. Running The Program From a Shell
+    5. Running The Program
+    6. Testing The Code base
+    7. UML
 ## **1. Definitions:**
 1) `"./" or "this directory"`- meaning the top level directory of this project, which happens to be the directory that this README.md file has been saved. The README.md is at the top level of this Python project, the project is in a folder named "James_Mortensen_Assignment_1"
 2) `"VSCODE"` - Visual Studio Code
@@ -91,4 +93,9 @@ Follow the above procedures for initializing the virtual environment, then run:
 
     ./test.sh
 
+## **7. UML**
+The UML Diagrams for this program have been provided in the folder `./docs/UML`.
 
+The model was developed using StarUML Educational License. 2 output images were produced in .png and .jpg formats.
+
+Models.mdj is the raw file that can be edited using StarUML.

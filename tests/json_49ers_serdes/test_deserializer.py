@@ -34,4 +34,3 @@ class TestDeserializer(unittest.TestCase):
 
     def test_single_element(self):
         games = des.Deserializer().from_file(SINGLE_ELEMENT_PATH)
-        
