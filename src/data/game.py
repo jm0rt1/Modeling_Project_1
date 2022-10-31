@@ -7,11 +7,6 @@ from typing import Any
 from src.data.team_stats import TeamStats
 
 
-class Games():
-    def __init__(self):
-        pass
-
-
 class Game:
     def __init__(self) -> None:
 
