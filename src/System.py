@@ -33,13 +33,15 @@ class System:
         Serializer().to_file(self.games, path)
         print(f"{len(self.games)} have been saved to {path.as_posix()}")
 
-    def add_game(self, game: Game = Game.from_console_input()):
+    def add_game(self, game: Optional[Game] = None):
         """
         The default argument exists for the purpose of reducing the number of dependencies in run.py, also eliminates an if block
 
         Args:
             game (Game, optional): Add a Game instance to the self.games list. Defaults to Game.from_console_input().
         """
+        if game is None:
+            game = Game.from_console_input()
         # initialize
         if self.games is None:
             self.games = []
@@ -85,11 +87,23 @@ class System:
         home_away: str = input("Home or Away?: ")
 
         # loop over games, find the name of the home/away team, and then compare equality.
-        found = []
+        found: list[Game] = []
 
         for game in self.games:
             if home_away == TeamRoles.HOME and game.homeTeamName.lower() == name:
                 found.append(game)  # type:ignore
+            if home_away == TeamRoles.AWAY and game.visTeamName.lower() == name:
+                found.append(game)  # type:ignore
+        if len(found) == 0:
+            print("...not found")
+            return
+        for i, game in enumerate(found):
+            print()
+            print()
+            print(f"found {i+1}:")
+            game.print()
+            print()
+            print("-------------------------")
 
 
 def choose_file_open():
@@ -102,6 +116,7 @@ def choose_file_open():
 
     root.quit()
     root.destroy()
+    root.mainloop()
 
     return Path(file_path)
 
@@ -116,5 +131,6 @@ def choose_file_save():
 
     root.quit()
     root.destroy()
+    root.mainloop()
 
     return Path(file_path)

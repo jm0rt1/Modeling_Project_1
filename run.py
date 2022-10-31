@@ -8,7 +8,7 @@ if __name__ == "__main__":
         print("2: Save Current Data to JSON File")
         print("3: Add a Game Via This Console")
         print("4: Print Games")
-        print("5: Print Games")
+        print("5: Print Games by name")
 
         print("X - Exit")
 
@@ -24,4 +24,3 @@ if __name__ == "__main__":
             system.print_games()
         elif a == "5":
             system.find()
-    pass

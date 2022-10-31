@@ -8,7 +8,6 @@ from src.data.team_stats import TeamStats
 
 
 class Game:
-
     """
     Will not be writing getters/setters for this class to reduce clutter. Utilize dot operator instead
     """
