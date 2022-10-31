@@ -41,22 +41,27 @@ class System:
         for i, game in enumerate(self.games):
             print(f"{i+1} -  {game.visTeamName}  at {game.homeTeamName}")
         valid_selection = False
+        selection_int = None
         while not valid_selection:
             selection = input("Enter Number of Game to Print: ")
-
             try:
-                sel_int = int(selection)
+                selection_int = int(selection)
             except:
                 print("Not a number")
                 valid_selection = False
-            sel_int -= 1
-            if not 0 <= sel_int < len(self.games):
+                continue
+            selection_int -= 1
+            if not 0 <= selection_int < len(self.games):
                 print("Not in range")
                 valid_selection = False
+                continue
             else:
                 valid_selection = True
 
-        self.games[sel_int].print()
+        if selection_int is None:
+            print("selection was not initialized -- an unexpected error occurred")
+        else:
+            self.games[selection_int].print()
 
 
 def choose_file_open():
