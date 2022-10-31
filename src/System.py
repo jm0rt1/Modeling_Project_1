@@ -28,7 +28,9 @@ class System:
         print(f"{len(self.games)} have been saved to {path.as_posix()}")
 
     def add_game(self, game: Game):
-        pass
+        if self.games is None:
+            self.games = []
+        self.games.append(game)
 
     def print_games(self, ):
         if self.games is None:
