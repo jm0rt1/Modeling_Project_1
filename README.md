@@ -1,4 +1,4 @@
-# Assignement 1
+# Project 1
 
 ## Summary:
 This project was developed on M1 (Arm64 based) based Mac, using Microsoft's Visual Studio Code Version: 1.72.0. The intention is to be compatible with any system through Python's Multiplatform Nature, however, this project will only be tested on Windows 10 and the latest MacOS version.
