@@ -1,6 +1,7 @@
 import enum
 import urllib.request
 from src.json_49ers_serdes.deserializer import Deserializer
+import re
 
 
 class StatsTypes(str, enum.Enum):
@@ -44,6 +45,35 @@ class TeamNamesIntEnum(enum.IntEnum):
     BENGALS = 31
     TEXANS = 32
 
+    @staticmethod
+    def get_str_name(team_number: int):
+        """
+        team number ranges from 1-32
+
+        Args:
+            team_number (int): number of the team to get the string for
+
+        Returns:
+            str: capitalized name
+        """
+        if not (1 <= team_number <= 32):
+            raise RuntimeError(
+                f"team number ranges from 1-32, team_number = {team_number}")
+
+        index = team_number - 1
+        teams_list = list(TeamNamesIntEnum)
+        item = teams_list[index]
+        item_str = str(item)
+        dot_idx = item_str.find(".")
+        name_all_caps = item_str[dot_idx+1:]
+        name_lower = name_all_caps.lower()
+        if name_lower[0].isalpha():
+            name_capped = name_lower.capitalize()
+            return name_capped
+
+        return name_lower
+        pass
+
 
 class URLs(str, enum.Enum):
     @staticmethod
@@ -56,7 +86,7 @@ class Client():
     def __init__(self) -> None:
         pass
         contents = urllib.request.urlopen(
-            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNamesIntEnum.BEARS)).read()
+            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNames.BEARS)).read()
         contents = str(contents, "utf-8")
 
         Deserializer().from_string(contents)
