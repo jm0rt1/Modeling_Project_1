@@ -47,7 +47,7 @@ class TeamNamesIntEnum(enum.IntEnum):
 
 class URLs(str, enum.Enum):
     @staticmethod
-    def NFL_SEARCH_HANDLER(stats_type: StatsTypes, season: int, teamName: TeamNames):
+    def NFL_SEARCH_HANDLER(stats_type: StatsTypes, season: int, teamName: TeamNamesIntEnum):
         value = f"https://sports.snoozle.net/search/nfl/searchHandler?fileType=inline&statType={stats_type}&season={season}&teamName={teamName}"
         return value
 
@@ -56,7 +56,7 @@ class Client():
     def __init__(self) -> None:
         pass
         contents = urllib.request.urlopen(
-            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNames.BEARS)).read()
+            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNamesIntEnum.BEARS)).read()
         contents = str(contents, "utf-8")
 
         Deserializer().from_string(contents)
