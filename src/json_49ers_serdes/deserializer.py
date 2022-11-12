@@ -13,7 +13,8 @@ class Deserializer:
     def from_string(self, json_string: str) -> list[Game]:
         data = json.loads(json_string)
         games: list[Game] = []
-
+        if "matchUpStats" in data.keys():
+            data = data["matchupStats"]
         for item in data:
             game = Game.from_dict(item)
             games.append(game)
