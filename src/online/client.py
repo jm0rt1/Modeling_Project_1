@@ -1,7 +1,11 @@
+from __future__ import annotations
 import enum
 import urllib.request
 from src.json_49ers_serdes.deserializer import Deserializer
+from src.data.game import Game
 import re
+
+ENCODING = "utf-8"
 
 
 class StatsTypes(str, enum.Enum):
@@ -72,7 +76,15 @@ class TeamNamesIntEnum(enum.IntEnum):
             return name_capped
 
         return name_lower
-        pass
+
+    @staticmethod
+    def get_team_number(team_name_str: str) -> TeamNamesIntEnum:
+        for item in list(TeamNamesIntEnum):
+            name = TeamNamesIntEnum.get_str_name(item.value)
+
+            if team_name_str.lower() == name.lower():
+                return item
+        raise RuntimeError("Could not find a number for entered team name")
 
 
 class URLs(str, enum.Enum):
@@ -86,7 +98,19 @@ class Client():
     def __init__(self) -> None:
         pass
         contents = urllib.request.urlopen(
-            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNames.BEARS)).read()
-        contents = str(contents, "utf-8")
+            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNamesIntEnum.BEARS)).read()
+        contents = str(contents, ENCODING)
 
         Deserializer().from_string(contents)
+
+    @staticmethod
+    def get_team_stats_by_number(year: int, team_number: TeamNamesIntEnum) -> list[Game]:
+        contents = urllib.request.urlopen(
+            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, year, team_number)).read()
+        contents = str(contents, ENCODING)
+        return Deserializer().from_string(contents)
+
+    @staticmethod
+    def get_team_stats_by_name(year: int, team_name: str) -> list[Game]:
+        team_number = TeamNamesIntEnum.get_team_number(team_name)
+        return Client.get_team_stats_by_number(year, team_number)

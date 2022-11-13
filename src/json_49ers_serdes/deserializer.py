@@ -14,7 +14,7 @@ class Deserializer:
         data = json.loads(json_string)
         games: list[Game] = []
         if isinstance(data, dict) and "matchUpStats" in data.keys():
-            data = data["matchupStats"]  # type:ignore
+            data = data["matchUpStats"]  # type:ignore
         if not (isinstance(data, list)):
             RuntimeError("Data did not reduce to a list[dict[Any,Any]]")
         for item in data:  # type:ignore
