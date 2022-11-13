@@ -8,6 +8,7 @@ from typing import Optional
 from src.data.game import Game
 from src.json_49ers_serdes.deserializer import Deserializer
 from src.json_49ers_serdes.serializer import Serializer
+from src.online.client import Client, TeamNamesIntEnum
 
 
 class TeamRoles(str, enum.Enum):
@@ -19,10 +20,40 @@ class System:
     def __init__(self, games: Optional[list[Game]] = None):
         self.games: Optional[list[Game]] = games
 
-    def load_data(self):
+    def load_data_from_file(self):
         path = choose_file_open()
         self.games = Deserializer().from_file(path)
         print(f"{len(self.games)} games loaded")
+
+    def load_data_from_snoozle_server(self):
+        ok = False
+        year = None
+        number = None
+        while not ok:
+            year_str = input("Enter desired season year: ")
+            try:
+                year = int(year_str)
+                ok = True
+            except:
+                print("not a valid year, must be numeric/integer")
+        print()
+        print(TeamNamesIntEnum.print_all_names_numbered())
+
+        ok = False
+        while not ok:
+            number_str = input("Enter number of desired team")
+
+            try:
+                number = int(number_str)
+                ok = True
+            except:
+                print("not a valid year, must be numeric/integer")
+
+        if year is None or number is None:
+            raise RuntimeError("Something went wrong")
+
+        self.games = Client.get_team_stats_by_number(
+            year, TeamNamesIntEnum(number))
 
     def save_data(self):
         if self.games is None:

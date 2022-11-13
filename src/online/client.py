@@ -86,6 +86,14 @@ class TeamNamesIntEnum(enum.IntEnum):
                 return item
         raise RuntimeError("Could not find a number for entered team name")
 
+    @staticmethod
+    def print_all_names_numbered() -> str:
+        return_str = ""
+        for item in list(TeamNamesIntEnum):
+            return_str += f"{item.value}: {TeamNamesIntEnum.get_str_name(item.value)}\n"
+
+        return return_str
+
 
 class URLs(str, enum.Enum):
     @staticmethod
