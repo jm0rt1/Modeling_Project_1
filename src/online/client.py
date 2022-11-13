@@ -3,7 +3,6 @@ import enum
 import urllib.request
 from src.json_49ers_serdes.deserializer import Deserializer
 from src.data.game import Game
-import re
 
 ENCODING = "utf-8"
 
@@ -105,11 +104,6 @@ class URLs(str, enum.Enum):
 class Client():
     def __init__(self) -> None:
         pass
-        contents = urllib.request.urlopen(
-            URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, 2020, TeamNamesIntEnum.BEARS)).read()
-        contents = str(contents, ENCODING)
-
-        Deserializer().from_string(contents)
 
     @staticmethod
     def get_team_stats_by_number(year: int, team_number: TeamNamesIntEnum) -> list[Game]:
