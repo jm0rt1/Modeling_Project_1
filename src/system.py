@@ -47,7 +47,7 @@ class System:
 
         ok = False
         while not ok:
-            number_str = input("Enter number of desired team")
+            number_str = input("Enter number of desired team: ")
 
             try:
                 number = int(number_str)
