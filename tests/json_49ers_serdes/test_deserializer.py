@@ -1,10 +1,9 @@
 from pathlib import Path
 import unittest
-import src.json_49ers_serdes.deserializer as des
-from src.data.game import Game
+import src.nfl_json_serdes.deserializer as des
 import os
 from stat import S_IREAD, S_IRGRP, S_IROTH
-from src.json_49ers_serdes.serializer import Serializer
+from src.nfl_json_serdes.serializer import Serializer
 from tests.json_49ers_serdes.strings import ORIGINAL_GAMES_STRING
 
 ORIGNAL_PATH = Path("./tests/test_files/ORIGINAL.json")
@@ -34,3 +33,5 @@ class TestDeserializer(unittest.TestCase):
 
     def test_single_element(self):
         games = des.Deserializer().from_file(SINGLE_ELEMENT_PATH)
+        self.assertEqual(len(games), 1)
+        self.assertEqual(games[0].date, '2020-09-13')

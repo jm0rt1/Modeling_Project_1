@@ -4,8 +4,8 @@ import enum
 import os
 from pathlib import Path
 import unittest
-from src.json_49ers_serdes.deserializer import Deserializer
-from src.json_49ers_serdes.serializer import Serializer
+from src.nfl_json_serdes.deserializer import Deserializer
+from src.nfl_json_serdes.serializer import Serializer
 from tests.json_49ers_serdes.test_deserializer import ORIGNAL_PATH, SINGLE_ELEMENT_PATH
 
 TEST_OUT_PATH = Path("./tests/test_files/test_output.json")

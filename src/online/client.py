@@ -1,7 +1,7 @@
 from __future__ import annotations
 import enum
 import urllib.request
-from src.json_49ers_serdes.deserializer import Deserializer
+from src.nfl_json_serdes.deserializer import Deserializer
 from src.data.game import Game
 
 ENCODING = "utf-8"

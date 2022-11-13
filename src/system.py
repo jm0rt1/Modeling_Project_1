@@ -6,8 +6,8 @@ from pathlib import Path
 from typing import Optional
 
 from src.data.game import Game
-from src.json_49ers_serdes.deserializer import Deserializer
-from src.json_49ers_serdes.serializer import Serializer
+from src.nfl_json_serdes.deserializer import Deserializer
+from src.nfl_json_serdes.serializer import Serializer
 from src.online.client import Client, TeamNamesIntEnum
 
 

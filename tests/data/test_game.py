@@ -3,7 +3,7 @@
 import unittest
 
 from src.data.game import Game
-from src.json_49ers_serdes.deserializer import Deserializer
+from src.nfl_json_serdes.deserializer import Deserializer
 from tests.json_49ers_serdes.test_deserializer import SINGLE_ELEMENT_PATH
 
 
