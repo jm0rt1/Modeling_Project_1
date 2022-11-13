@@ -10,6 +10,9 @@ printing of team name, team number and season record.
 
 - Added "online" package
 - Renamed "json_49ers_serdes" to "nfl_json_serdes"
+- Implmeneted new front-end features in run.py that contribute to project 2 feature goals
+    - An option to load statistics from sports.snoozle.net into memory and manipulate the list using the existing features
+    - An option to print out a simple one liner for a given team's W/L record
 
 
 
