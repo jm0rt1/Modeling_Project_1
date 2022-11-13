@@ -116,16 +116,37 @@ class TeamNamesIntEnum(enum.IntEnum):
 class URLs(str, enum.Enum):
     @staticmethod
     def NFL_SEARCH_HANDLER(stats_type: StatsTypes, season: int, teamName: TeamNamesIntEnum):
+        """
+        based on example URL https://sports.snoozle.net/search/nfl/searchHandler?fileType=inline&statType=teamStats&season=2020&teamName=26
+
+        Args:
+            stats_type (StatsTypes): type of stat to get
+            season (int): season year
+            teamName (TeamNamesIntEnum): team name parameter (an integer to the API)
+
+        Returns:
+            _type_: _description_
+        """
         value = f"https://sports.snoozle.net/search/nfl/searchHandler?fileType=inline&statType={stats_type}&season={season}&teamName={teamName}"
         return value
 
 
-class Client():
+class SnoozelSportsClient():
     def __init__(self) -> None:
         pass
 
     @staticmethod
     def get_team_stats_by_number(year: int, team_number: TeamNamesIntEnum) -> list[Game]:
+        """
+        get a list of Game objects using the year and team number
+
+        Args:
+            year (int): season year
+            team_number (TeamNamesIntEnum): team number in API
+
+        Returns:
+            list[Game]: list of Game objects retrieved
+        """
         contents = urllib.request.urlopen(
             URLs.NFL_SEARCH_HANDLER(StatsTypes.TEAM_STATS, year, team_number)).read()
         contents = str(contents, ENCODING)
@@ -133,5 +154,15 @@ class Client():
 
     @staticmethod
     def get_team_stats_by_name(year: int, team_name: str) -> list[Game]:
+        """
+       get a list of Game objects using the year and team name
+
+        Args:
+            year (int): season year
+            team_name (TeamNamesIntEnum): string team name
+
+        Returns:
+            list[Game]: list of Game objects retrieved
+        """
         team_number = TeamNamesIntEnum.get_team_number(team_name)
-        return Client.get_team_stats_by_number(year, team_number)
+        return SnoozelSportsClient.get_team_stats_by_number(year, team_number)

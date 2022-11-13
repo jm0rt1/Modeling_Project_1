@@ -8,7 +8,7 @@ from typing import Optional
 from src.data.game import Game
 from src.nfl_json_serdes.deserializer import Deserializer
 from src.nfl_json_serdes.serializer import Serializer
-from src.online.client import Client, TeamNamesIntEnum
+from src.online.client import SnoozelSportsClient, TeamNamesIntEnum
 
 
 class TeamRoles(str, enum.Enum):
@@ -28,7 +28,7 @@ class System:
     def load_data_from_snoozle_server(self):
         year, number = self.__get_year_and_team()
 
-        self.games = Client.get_team_stats_by_number(
+        self.games = SnoozelSportsClient.get_team_stats_by_number(
             year, TeamNamesIntEnum(number))
 
     def __get_year_and_team(self) -> tuple[int, int]:
@@ -61,7 +61,7 @@ class System:
 
     def get_team_record(self):
         year, number = self.__get_year_and_team()
-        games = Client.get_team_stats_by_number(
+        games = SnoozelSportsClient.get_team_stats_by_number(
             year, TeamNamesIntEnum(number))
         name = TeamNamesIntEnum.get_str_name(number)
         wins = 0

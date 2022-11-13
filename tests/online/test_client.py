@@ -1,5 +1,5 @@
 import enum
-from src.online.client import Client, TeamNamesIntEnum
+from src.online.client import SnoozelSportsClient, TeamNamesIntEnum
 
 import unittest
 
@@ -41,19 +41,19 @@ class NameStrs(str, enum.Enum):
 
 class TestClient(unittest.TestCase):
     def test_init(self):
-        _ = Client()
+        _ = SnoozelSportsClient()
 
     def test_get_games_by_number(self):
 
         for number in TeamNamesIntEnum:
-            data = Client.get_team_stats_by_number(2020, number)
+            data = SnoozelSportsClient.get_team_stats_by_number(2020, number)
             self.assertGreaterEqual(len(data), 15)
             pass
 
     def test_get_games_by_name(self):
 
         for _, item in enumerate(NameStrs):
-            data = Client.get_team_stats_by_name(2020, item.value)
+            data = SnoozelSportsClient.get_team_stats_by_name(2020, item.value)
             self.assertGreaterEqual(len(data), 15)
 
 
