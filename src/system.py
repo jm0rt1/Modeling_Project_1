@@ -26,6 +26,12 @@ class System:
         print(f"{len(self.games)} games loaded")
 
     def load_data_from_snoozle_server(self):
+        year, number = self.__get_year_and_team()
+
+        self.games = Client.get_team_stats_by_number(
+            year, TeamNamesIntEnum(number))
+
+    def __get_year_and_team(self) -> tuple[int, int]:
         ok = False
         year = None
         number = None
@@ -51,9 +57,32 @@ class System:
 
         if year is None or number is None:
             raise RuntimeError("Something went wrong")
+        return year, number
 
-        self.games = Client.get_team_stats_by_number(
+    def get_team_record(self):
+        year, number = self.__get_year_and_team()
+        games = Client.get_team_stats_by_number(
             year, TeamNamesIntEnum(number))
+        name = TeamNamesIntEnum.get_str_name(number)
+        wins = 0
+        loss = 0
+
+        # calculate wins and losses
+        for game in games:
+            if game.homeTeamName == name:
+                this_team_stats = game.homeStats
+                other_team_stats = game.visStats
+            else:
+                this_team_stats = game.visStats
+                other_team_stats = game.homeStats
+
+            if this_team_stats.score > other_team_stats.score:
+                wins += 1
+            else:
+                loss += 1
+
+        print(f"Team #{number}: {name} {year} W-L Record: {wins} - {loss}")
+        pass
 
     def save_data(self):
         if self.games is None:

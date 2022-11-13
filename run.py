@@ -10,6 +10,7 @@ if __name__ == "__main__":
         print("4: Add a Game Via This Console")
         print("5: Print Games")
         print("6: Print Games by name")
+        print("7: Get Team Season Record")
 
         print("X - Exit")
 
@@ -27,3 +28,5 @@ if __name__ == "__main__":
             system.print_games()
         elif a == "6":
             system.find()
+        elif a == "7":
+            system.get_team_record()
