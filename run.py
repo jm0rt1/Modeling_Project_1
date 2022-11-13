@@ -5,12 +5,12 @@ if __name__ == "__main__":
     a = ""
     while a.lower() != "x":
         print("1: Load Games From JSON File")
-        print("2: Load a team's season stats From Snoozel Server")
+        print("2: Load a Team's Season Stats From Snoozel Server")
         print("3: Save Current Data to JSON File")
         print("4: Add a Game Via This Console")
         print("5: Print Games")
-        print("6: Print Games by name")
-        print("7: Get Team Season Record")
+        print("6: Print Games by Name")
+        print("7: Get a Team's Season Record From Snoozel Server")
 
         print("X - Exit")
 
