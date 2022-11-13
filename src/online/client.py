@@ -106,6 +106,12 @@ class TeamNamesIntEnum(enum.IntEnum):
 
     @staticmethod
     def print_all_names_numbered() -> str:
+        """
+        print all of the names numbered out in the format "{number}: {name}\n..."
+
+        Returns:
+            str: "{number}: {name}\n..." 
+        """
         return_str = ""
         for item in list(TeamNamesIntEnum):
             return_str += f"{item.value}: {TeamNamesIntEnum.get_str_name(item.value)}\n"
@@ -114,6 +120,9 @@ class TeamNamesIntEnum(enum.IntEnum):
 
 
 class URLs(str, enum.Enum):
+    """
+    Builds URLs dynamically, and enumerates static URLs
+    """
     @staticmethod
     def NFL_SEARCH_HANDLER(stats_type: StatsTypes, season: int, teamName: TeamNamesIntEnum):
         """
@@ -132,9 +141,9 @@ class URLs(str, enum.Enum):
 
 
 class SnoozelSportsClient():
-    def __init__(self) -> None:
-        pass
-
+    """
+    sports.snoozle.net API client
+    """
     @staticmethod
     def get_team_stats_by_number(year: int, team_number: TeamNamesIntEnum) -> list[Game]:
         """
