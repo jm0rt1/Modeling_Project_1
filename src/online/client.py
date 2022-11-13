@@ -8,12 +8,17 @@ ENCODING = "utf-8"
 
 
 class StatsTypes(str, enum.Enum):
+    """
+    strings that may be used to populate the "statType" field in
+    the URLs.NFL_SEARCH_HANDLER's GET request to sports.snoozle.net
+    """
     TEAM_STATS = "teamStats"
 
 
 class TeamNamesIntEnum(enum.IntEnum):
     """
-    Ordered -- Order matches the numbers for the teams in the API
+    Ordered -- Order matches the numbers for the
+    teams in thesports.snoozle.net API for the field teamName.
     """
     CARDINALS = 1
     FALCONS = 2
@@ -70,6 +75,8 @@ class TeamNamesIntEnum(enum.IntEnum):
         dot_idx = item_str.find(".")
         name_all_caps = item_str[dot_idx+1:]
         name_lower = name_all_caps.lower()
+        if name_lower.startswith("t_"):
+            name_lower = name_lower.replace("t_", "")
         if name_lower[0].isalpha():
             name_capped = name_lower.capitalize()
             return name_capped
@@ -78,6 +85,18 @@ class TeamNamesIntEnum(enum.IntEnum):
 
     @staticmethod
     def get_team_number(team_name_str: str) -> TeamNamesIntEnum:
+        """
+        Convert string name to number
+
+        Args:
+            team_name_str (str): string name that should be converted to its number
+
+        Raises:
+            RuntimeError: Could not find a number for entered team name
+
+        Returns:
+            TeamNamesIntEnum: integer enum element representing the string team name
+        """
         for item in list(TeamNamesIntEnum):
             name = TeamNamesIntEnum.get_str_name(item.value)
 

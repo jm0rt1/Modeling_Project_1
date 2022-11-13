@@ -30,7 +30,7 @@ class NameStrs(str, enum.Enum):
     STEELERS = "Steelers"
     CHARGERS = "Chargers"
     SEAHAWKS = "Seahawks"
-    T_49ERS = "T_49ers"
+    T_49ERS = "49ers"
     RAMS = "Rams"
     BUCCANEERS = "Buccaneers"
     TITANS = "Titans"
@@ -61,7 +61,8 @@ class TestTeamNamesIntEnum(unittest.TestCase):
     def test_str_names(self):
         for i in range(1, 33):
             name = TeamNamesIntEnum.get_str_name(i)
-            self.assertEqual(list(NameStrs)[i-1].value,  name)
+            expected = list(NameStrs)[i-1].value
+            self.assertEqual(expected,  name)
 
     def test_get_team_number(self):
         for i, item in enumerate(NameStrs):
