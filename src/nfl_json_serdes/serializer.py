@@ -10,7 +10,16 @@ class Serializer:
     def __init__(self):
         pass
 
-    def to_string(self, games: list[Game]):
+    def to_string(self, games: list[Game]) -> str:
+        """
+        games list to JSON string
+
+        Args:
+            games (list[Game]): a list of games to convert to a string
+
+        Returns:
+            str: JSON string
+        """
         # make a copy, so as not to bugger the ref
         g = deepcopy(games)
         games_dicts_list = []
@@ -23,6 +32,13 @@ class Serializer:
         return string
 
     def to_file(self, games: list[Game], path: Path):
+        """
+        games list saved to a file
+
+        Args:
+            games (list[Game]): games list list
+            path (Path): path to save to (parent folders will be created)
+        """
         path.parent.mkdir(parents=True, exist_ok=True)
         json_str = self.to_string(games)
         with open(path, "w") as fp:

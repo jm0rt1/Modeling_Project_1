@@ -11,6 +11,15 @@ class Deserializer:
         pass
 
     def from_string(self, json_string: str) -> list[Game]:
+        """
+        Convert from a json string to a list of Game objects
+
+        Args:
+            json_string (str): json string representing list[Game]
+
+        Returns:
+            list[Game]: list of Game objects represented by inputted string
+        """
         data = json.loads(json_string)
         games: list[Game] = []
         if isinstance(data, dict) and "matchUpStats" in data.keys():
@@ -23,6 +32,15 @@ class Deserializer:
         return games
 
     def from_file(self, path: Path) -> list[Game]:
+        """
+        take file input path and convert to a list of Games
+
+        Args:
+            path (Path): path to file with JSON String
+
+        Returns:
+            list[Game]: list of Games represented by string at path
+        """
         json_str = ""
         with open(path, "r") as fp:
             json_str = fp.read()
