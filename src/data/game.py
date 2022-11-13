@@ -1,7 +1,5 @@
 
 from __future__ import annotations
-
-
 import enum
 from typing import Any
 from src.data.team_stats import TeamStats
