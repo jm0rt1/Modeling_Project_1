@@ -31,32 +31,42 @@ class Ui_MainWindow(object):
         self.team_combobox = QComboBox(self.centralwidget)
         self.team_combobox.setObjectName(u"team_combobox")
 
-        self.gridLayout.addWidget(self.team_combobox, 3, 0, 1, 1)
-
-        self.display_button = QPushButton(self.centralwidget)
-        self.display_button.setObjectName(u"display_button")
-
-        self.gridLayout.addWidget(self.display_button, 6, 0, 1, 2)
-
-        self.game_number_combobox = QComboBox(self.centralwidget)
-        self.game_number_combobox.setObjectName(u"game_number_combobox")
-
-        self.gridLayout.addWidget(self.game_number_combobox, 3, 1, 2, 1)
-
-        self.display_table = QTableView(self.centralwidget)
-        self.display_table.setObjectName(u"display_table")
-
-        self.gridLayout.addWidget(self.display_table, 7, 0, 1, 2)
+        self.gridLayout.addWidget(self.team_combobox, 3, 1, 1, 1)
 
         self.team_label = QLabel(self.centralwidget)
         self.team_label.setObjectName(u"team_label")
 
-        self.gridLayout.addWidget(self.team_label, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.team_label, 0, 1, 1, 1)
 
         self.game_number_label = QLabel(self.centralwidget)
         self.game_number_label.setObjectName(u"game_number_label")
 
-        self.gridLayout.addWidget(self.game_number_label, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.game_number_label, 0, 2, 1, 1)
+
+        self.game_number_combobox = QComboBox(self.centralwidget)
+        self.game_number_combobox.setObjectName(u"game_number_combobox")
+
+        self.gridLayout.addWidget(self.game_number_combobox, 3, 2, 2, 1)
+
+        self.year_combobox = QComboBox(self.centralwidget)
+        self.year_combobox.setObjectName(u"year_combobox")
+
+        self.gridLayout.addWidget(self.year_combobox, 3, 0, 1, 1)
+
+        self.display_table = QTableView(self.centralwidget)
+        self.display_table.setObjectName(u"display_table")
+
+        self.gridLayout.addWidget(self.display_table, 7, 0, 1, 3)
+
+        self.display_button = QPushButton(self.centralwidget)
+        self.display_button.setObjectName(u"display_button")
+
+        self.gridLayout.addWidget(self.display_button, 5, 1, 1, 1)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -74,8 +84,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.display_button.setText(QCoreApplication.translate("MainWindow", u"Display ", None))
         self.team_label.setText(QCoreApplication.translate("MainWindow", u"Team:", None))
         self.game_number_label.setText(QCoreApplication.translate("MainWindow", u"Game Number:", None))
+        self.display_button.setText(QCoreApplication.translate("MainWindow", u"Show", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Season Year:", None))
     # retranslateUi
 
