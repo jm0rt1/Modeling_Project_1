@@ -69,3 +69,9 @@ class TestTeamNamesIntEnum(unittest.TestCase):
             name = item.value
             result = TeamNamesIntEnum.get_team_number(name)
             self.assertEqual(result, i+1)
+
+    def test_list_names(self):
+        result = TeamNamesIntEnum.list_names()
+        for i, item in enumerate(NameStrs):
+            name = item.value
+            self.assertEqual(result[i], name)

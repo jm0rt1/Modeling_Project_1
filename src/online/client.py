@@ -118,6 +118,13 @@ class TeamNamesIntEnum(enum.IntEnum):
 
         return return_str
 
+    @staticmethod
+    def list_names() -> list[str]:
+        names: list[str] = []
+        for item in list(TeamNamesIntEnum):
+            names.append(TeamNamesIntEnum.get_str_name(item.value))
+        return names
+
 
 class URLs(str, enum.Enum):
     """
