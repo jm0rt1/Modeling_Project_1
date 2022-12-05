@@ -13,3 +13,6 @@ class Model(QtCore.QObject):
     def load_data_from_snoozle_server(self, year: int, name: str):
         self.games = SnoozelSportsClient.get_team_stats_by_name(
             year, name)
+
+    def update_games_list(self):
+        pass
