@@ -1,0 +1,4 @@
+- Make game number selection disabled until team is selected
+- Add static labels that display win loss record after team is selected
+- Add
+- Add
