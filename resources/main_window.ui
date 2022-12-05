@@ -35,9 +35,6 @@
     <item row="3" column="2" rowspan="2">
      <widget class="QComboBox" name="game_number_combobox"/>
     </item>
-    <item row="3" column="0">
-     <widget class="QComboBox" name="year_combobox"/>
-    </item>
     <item row="7" column="0" colspan="3">
      <widget class="QTableView" name="display_table"/>
     </item>
@@ -52,6 +49,16 @@
      <widget class="QLabel" name="label">
       <property name="text">
        <string>Season Year:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLineEdit" name="year_line_edit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
      </widget>
     </item>

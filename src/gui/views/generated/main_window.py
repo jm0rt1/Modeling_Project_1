@@ -16,8 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QHeaderView,
-    QLabel, QMainWindow, QMenuBar, QPushButton,
-    QSizePolicy, QStatusBar, QTableView, QWidget)
+    QLabel, QLineEdit, QMainWindow, QMenuBar,
+    QPushButton, QSizePolicy, QStatusBar, QTableView,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -48,11 +49,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.game_number_combobox, 3, 2, 2, 1)
 
-        self.year_combobox = QComboBox(self.centralwidget)
-        self.year_combobox.setObjectName(u"year_combobox")
-
-        self.gridLayout.addWidget(self.year_combobox, 3, 0, 1, 1)
-
         self.display_table = QTableView(self.centralwidget)
         self.display_table.setObjectName(u"display_table")
 
@@ -67,6 +63,16 @@ class Ui_MainWindow(object):
         self.label.setObjectName(u"label")
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+
+        self.year_line_edit = QLineEdit(self.centralwidget)
+        self.year_line_edit.setObjectName(u"year_line_edit")
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.year_line_edit.sizePolicy().hasHeightForWidth())
+        self.year_line_edit.setSizePolicy(sizePolicy)
+
+        self.gridLayout.addWidget(self.year_line_edit, 3, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
