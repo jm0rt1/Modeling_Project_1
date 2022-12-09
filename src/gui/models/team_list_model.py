@@ -8,7 +8,7 @@ from src.online.client import TeamNamesIntEnum
 class TeamListModel(QtGui.QStandardItemModel):
 
     def __init__(self):
-        super().__init__(None)
+        super().__init__(None)  # type:ignore
         names = TeamNamesIntEnum.list_names()
         for name in names:
-            self.appendRow(QtGui.QStandardItem(name))
+            self.appendRow(QtGui.QStandardItem(name))  # type:ignore

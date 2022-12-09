@@ -4,7 +4,6 @@ from PySide6 import QtCore
 from src.gui.models.game_display_table_model import GameDisplayTableModel
 from src.gui.models.games_list_combobox_model import GamesListComboboxModel
 from src.online.client import SnoozelSportsClient
-from src.data.game import Game
 
 
 class Model(QtCore.QObject):

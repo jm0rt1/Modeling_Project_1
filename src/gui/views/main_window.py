@@ -16,17 +16,21 @@ class MainWindow(Ui_MainWindow):
 
     def __initialize(self):
         # connect signals/slots
-        self.display_button.clicked.connect(self.clicked_display_button)
-        self.team_combobox.currentIndexChanged.connect(self.team_selected)
-        self.year_line_edit.textEdited.connect(self.year_line_edit_changed)
+        self.display_button.clicked.connect(  # type:ignore
+            self.clicked_display_button)
+        self.team_combobox.currentIndexChanged.connect(  # type:ignore
+            self.team_selected)
+        self.year_line_edit.textEdited.connect(  # type:ignore
+            self.year_line_edit_changed)
         # connect models
-        self.team_combobox.setModel(TeamListModel())
-        self.game_number_combobox.setModel(self.model.games_combobox_model)
+        self.team_combobox.setModel(TeamListModel())  # type:ignore
+        self.game_number_combobox.setModel(  # type:ignore
+            self.model.games_combobox_model)
 
     def year_line_edit_changed(self, text: str):
         if text.isdigit() and len(text) == 4:
             try:
-                text_int = int(text)
+                _ = int(text)
             except:
                 return
             self.team_selected(self.team_combobox.currentIndex())
