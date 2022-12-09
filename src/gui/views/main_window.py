@@ -18,8 +18,18 @@ class MainWindow(Ui_MainWindow):
         # connect signals/slots
         self.display_button.clicked.connect(self.clicked_display_button)
         self.team_combobox.currentIndexChanged.connect(self.team_selected)
+        self.year_line_edit.textEdited.connect(self.year_line_edit_changed)
         # connect models
         self.team_combobox.setModel(TeamListModel())
+        self.game_number_combobox.setModel(self.model.games_combobox_model)
+
+    def year_line_edit_changed(self, text: str):
+        if text.isdigit() and len(text) == 4:
+            try:
+                text_int = int(text)
+            except:
+                return
+            self.team_selected(self.team_combobox.currentIndex())
 
     def run(self):
         app = QApplication(sys.argv)
