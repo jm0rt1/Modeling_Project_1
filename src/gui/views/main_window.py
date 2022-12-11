@@ -23,7 +23,7 @@ class MainWindow(Ui_MainWindow):
         self.year_line_edit.textEdited.connect(  # type:ignore
             self.year_line_edit_changed)
         # connect models
-        self.team_combobox.setModel(TeamListModel())  # type:ignore
+        self.team_combobox.setModel(self.model.team_list_model)  # type:ignore
         self.game_number_combobox.setModel(  # type:ignore
             self.model.games_combobox_model)
         self.display_table.setModel(self.model.displayed_game)
@@ -49,7 +49,7 @@ class MainWindow(Ui_MainWindow):
         self.model.displayed_game.populate(
             self.model.games[self.game_number_combobox.currentIndex()])
 
-    def team_selected(self, index: int):
+    def team_selected(self):
         year = int(self.year_line_edit.text())
         name = self.team_combobox.currentText()
         self.model.load_data_from_snoozle_server(year, name)
