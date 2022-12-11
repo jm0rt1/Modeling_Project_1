@@ -26,6 +26,7 @@ class MainWindow(Ui_MainWindow):
         self.team_combobox.setModel(TeamListModel())  # type:ignore
         self.game_number_combobox.setModel(  # type:ignore
             self.model.games_combobox_model)
+        self.display_table.setModel(self.model.displayed_game)
 
     def year_line_edit_changed(self, text: str):
         if text.isdigit() and len(text) == 4:
@@ -44,7 +45,9 @@ class MainWindow(Ui_MainWindow):
         app.exec_()
 
     def clicked_display_button(self):
-        pass
+        self.model.displayed_game.clear()
+        self.model.displayed_game.populate(
+            self.model.games[self.game_number_combobox.currentIndex()])
 
     def team_selected(self, index: int):
         year = int(self.year_line_edit.text())
