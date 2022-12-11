@@ -11,7 +11,6 @@ class Model(QtCore.QObject):
         super().__init__(parent)
         self.games_combobox_model = GamesListComboboxModel()
         self.displayed_game = GameDisplayTableModel()
-        
 
     def load_data_from_snoozle_server(self, year: int, name: str):
         self.games = SnoozelSportsClient.get_team_stats_by_name(
