@@ -33,8 +33,7 @@ class MainWindow(Ui_MainWindow):
                 _ = int(text)
             except:
                 return
-            self.team_selected(
-                self.team_combobox.currentIndex())  # type:ignore
+            self.team_selected()  # type:ignore
 
     def run(self):
         app = QApplication(sys.argv)
@@ -50,6 +49,7 @@ class MainWindow(Ui_MainWindow):
             self.model.games[self.game_number_combobox.currentIndex()])
 
     def team_selected(self):
-        year = int(self.year_line_edit.text())
-        name = self.team_combobox.currentText()
-        self.model.load_data_from_snoozle_server(year, name)
+        if self.year_line_edit.text().isdigit() and len(self.year_line_edit.text()) == 4:
+            year = int(self.year_line_edit.text())
+            name = self.team_combobox.currentText()
+            self.model.load_data_from_snoozle_server(year, name)
