@@ -13,7 +13,7 @@ class GameDisplayTableModel(QtGui.QStandardItemModel):
         super().__init__(None)  # type:ignore
 
     def populate(self, game: Game):
-        self.appendRow([QtGui.QStandardItem(""), QtGui.QStandardItem(
+        self.appendRow([QtGui.QStandardItem(""), QtGui.QStandardItem(  # type:ignore
             game.visTeamName), QtGui.QStandardItem("at"), QtGui.QStandardItem(game.homeTeamName)])
 
         for key in game.visStats.__dict__.keys():
@@ -21,5 +21,5 @@ class GameDisplayTableModel(QtGui.QStandardItemModel):
             home_stats = game.homeStats.__dict__
             if key in KEY_BLACKLIST:
                 continue
-            self.appendRow([QtGui.QStandardItem(key), QtGui.QStandardItem(
+            self.appendRow([QtGui.QStandardItem(key), QtGui.QStandardItem(  # type:ignore
                 str(vis_stats[key])), QtGui.QStandardItem("-"), QtGui.QStandardItem(str(home_stats[key]))])

@@ -12,4 +12,4 @@ class TestDataOutputTableModel(unittest.TestCase):
         gdtm = GameDisplayTableModel()
         games = Deserializer().from_file(ORIGNAL_PATH)
 
-        gdtm.populate(games)
+        gdtm.populate(games[1])

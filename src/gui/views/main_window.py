@@ -1,5 +1,4 @@
 from src.gui.models.model import Model
-from src.gui.models.team_list_model import TeamListModel
 from src.gui.views.generated.main_window import Ui_MainWindow
 # Only needed for access to command line arguments
 import sys
@@ -26,7 +25,7 @@ class MainWindow(Ui_MainWindow):
         self.team_combobox.setModel(self.model.team_list_model)  # type:ignore
         self.game_number_combobox.setModel(  # type:ignore
             self.model.games_combobox_model)
-        self.display_table.setModel(self.model.displayed_game)
+        self.display_table.setModel(self.model.displayed_game)  # type:ignore
 
     def year_line_edit_changed(self, text: str):
         if text.isdigit() and len(text) == 4:
@@ -34,7 +33,8 @@ class MainWindow(Ui_MainWindow):
                 _ = int(text)
             except:
                 return
-            self.team_selected(self.team_combobox.currentIndex())
+            self.team_selected(
+                self.team_combobox.currentIndex())  # type:ignore
 
     def run(self):
         app = QApplication(sys.argv)
