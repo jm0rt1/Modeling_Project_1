@@ -1,5 +1,17 @@
 
 # Version History Changelog
+
+## Project 3
+1. ./src/system.py was replaced by ./src/main.py: Console-based application has been erased at commit: 4676e2a2bb3c115a9b5de5f96946c9c1d4a8ff77
+
+Most printing methods have been left in various classes just for unit testing
+
+2. Developed GUI components found in ./src/gui
+    -Models Contain data oriented GUI elements' models
+    -Views contain the generated view definitions and their asscoieted controller.
+
+Server data now shows on the GUI in a table based view. Does not effectively check connection to internet. Choosing to wait for project 4's requirement on multithreading to handle that since it would probably change the interface significantly, and there is no real gain right now.
+
 Most Recent First
 ## Project 2
 
