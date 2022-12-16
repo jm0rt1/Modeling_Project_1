@@ -171,7 +171,7 @@ class SnoozelSportsClient():
     @staticmethod
     def get_team_stats_by_name(year: int, team_name: str) -> list[Game]:
         """
-       get a list of Game objects using the year and team name
+        get a list of Game objects using the year and team name
 
         Args:
             year (int): season year
