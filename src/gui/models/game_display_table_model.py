@@ -1,5 +1,5 @@
 from __future__ import annotations
-from PySide6 import QtGui
+from PySide6 import QtGui, QtCore
 
 from src.data.game import Game
 from src.data.team_stats import TeamStats
