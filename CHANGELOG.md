@@ -1,5 +1,10 @@
 
 # Version History Changelog
+## Project 4
+1. Added "ClientWorker" class: A thread that is started up by the Model.
+Thread initially sleeps and is woken up by the "request_data" method to retrieve the needed data. Then sends a signal back to the GUI event loop with the data.
+    - Updated the UML model with this class
+
 
 ## Project 3
 1. ./src/system.py was replaced by ./src/main.py: Console-based application has been erased at commit: 4676e2a2bb3c115a9b5de5f96946c9c1d4a8ff77
