@@ -16,7 +16,8 @@ class Model(QtCore.QObject):
         self.displayed_game = GameDisplayTableModel()
         self.team_list_model = TeamListModel()
         self.client_worker = ClientWorker()
-        self.client_worker.send_data.connect(self.games_recieved)
+        self.client_worker.send_data.connect(  # type:ignore
+            self.games_recieved)  # type:ignore
         self.client_worker.start()
 
     def load_data_from_snoozle_server(self, year: int, name: str):

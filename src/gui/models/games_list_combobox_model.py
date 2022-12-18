@@ -17,7 +17,7 @@ class GamesListComboboxModel(QtGui.QStandardItemModel):
             self.appendRow(QtGui.QStandardItem(game_str))  # type:ignore
 
     def display_no_games_found(self):
-        self.appendRow(QtGui.QStandardItem("No Games Found"))
+        self.appendRow(QtGui.QStandardItem("No Games Found")) # type:ignore
 
 
 def list_games(games: list[Game]) -> list[str]:

@@ -4,8 +4,6 @@ from src.online.client import SnoozelSportsClient
 
 # using QThread to develop the interface directly into the event loop of the PySide6 (Qt) based GUI
 
-import pydevd
-
 
 class ClientWorker(QtCore.QThread):
     send_data = QtCore.Signal(object)
@@ -18,14 +16,13 @@ class ClientWorker(QtCore.QThread):
         self.name = ""
 
     def run(self):
-        pydevd.settrace(suspend=False)
         while True:
             self.mutex.lock()
             self.condition.wait(self.mutex)
             self.mutex.unlock()
             games = SnoozelSportsClient.get_team_stats_by_name(
                 self.year, self.name)
-            self.send_data.emit(games)
+            self.send_data.emit(games)  # type:ignore
             pass
 
     def request_data(self, year: int, name: str):
