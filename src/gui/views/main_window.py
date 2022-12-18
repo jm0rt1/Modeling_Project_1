@@ -14,6 +14,9 @@ class MainWindow(Ui_MainWindow):
         self.model = Model()
 
     def __initialize(self):
+        """
+        All the initialization steps that need to happen programmatically
+        """
         # connect signals/slots
         self.display_button.clicked.connect(  # type:ignore
             self.clicked_display_button)
@@ -28,6 +31,9 @@ class MainWindow(Ui_MainWindow):
         self.display_table.setModel(self.model.displayed_game)  # type:ignore
 
     def year_line_edit_changed(self, text: str):
+        """
+        line edit changed for the year entry
+        """
         if text.isdigit() and len(text) == 4:
             try:
                 _ = int(text)
@@ -36,6 +42,9 @@ class MainWindow(Ui_MainWindow):
             self.team_selected()  # type:ignore
 
     def run(self):
+        """
+        Start the application
+        """
         app = QApplication(sys.argv)
         window = QMainWindow()
         self.setupUi(window)  # type:ignore
@@ -44,11 +53,17 @@ class MainWindow(Ui_MainWindow):
         app.exec_()
 
     def clicked_display_button(self):
+        """
+        When the display button on the screen is clicked, this function runs
+        """
         self.model.displayed_game.clear()
         self.model.displayed_game.populate(
             self.model.games[self.game_number_combobox.currentIndex()])
 
     def team_selected(self):
+        """
+        When a new team is selected from the combobox
+        """
         if self.year_line_edit.text().isdigit() and len(self.year_line_edit.text()) == 4:
             year = int(self.year_line_edit.text())
             name = self.team_combobox.currentText()

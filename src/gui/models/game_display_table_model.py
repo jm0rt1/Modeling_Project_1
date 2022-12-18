@@ -10,9 +10,18 @@ KEY_BLACKLIST = [TeamStats.Keys.STAT_ID_CODE,
 
 class GameDisplayTableModel(QtGui.QStandardItemModel):
     def __init__(self):
+        """
+        constructor
+        """
         super().__init__(None)  # type:ignore
 
     def populate(self, game: Game):
+        """
+        Populate the table with information from the selected game
+
+        Args:
+            game (Game): Game to display
+        """
         self.appendRow([QtGui.QStandardItem(""), QtGui.QStandardItem(  # type:ignore
             game.visTeamName), QtGui.QStandardItem("at"), QtGui.QStandardItem(game.homeTeamName)])
 

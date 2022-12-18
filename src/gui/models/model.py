@@ -21,11 +21,24 @@ class Model(QtCore.QObject):
         self.client_worker.start()
 
     def load_data_from_snoozle_server(self, year: int, name: str):
+        """
+        make a request to the client worker
+
+        Args:
+            year (int): year of season
+            name (str): Name of team
+        """
         # self.games = SnoozelSportsClient.get_team_stats_by_name(
         #     year, name)
         self.client_worker.request_data(year, name)
 
     def games_recieved(self, games: list[Game]):
+        """
+        games sent from the ClientWorker are recieved here
+
+        Args:
+            games (list[Game]): Games downloaded by the ClientWorker
+        """
         self.games = games
         self.games_combobox_model.clear()
         if len(self.games) > 0:

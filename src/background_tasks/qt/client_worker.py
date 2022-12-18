@@ -9,6 +9,13 @@ class ClientWorker(QtCore.QThread):
     send_data = QtCore.Signal(object)
 
     def __init__(self, condition: QtCore.QWaitCondition = QtCore.QWaitCondition(), mutex: QtCore.QMutex = QtCore.QMutex()) -> None:
+        """
+        Constructor
+
+        Args:
+            condition (QtCore.QWaitCondition, optional): optional condition variable. Defaults to QtCore.QWaitCondition().
+            mutex (QtCore.QMutex, optional): optional mutex. Defaults to QtCore.QMutex().
+        """
         super().__init__(None)
         self.condition = condition
         self.mutex = mutex
@@ -16,6 +23,9 @@ class ClientWorker(QtCore.QThread):
         self.name = ""
 
     def run(self):
+        """
+        called on self.start, very simple, not much error checking
+        """
         while True:
             self.mutex.lock()
             self.condition.wait(self.mutex)
@@ -26,6 +36,13 @@ class ClientWorker(QtCore.QThread):
             pass
 
     def request_data(self, year: int, name: str):
+        """
+        Wake the thread to request data from the API
+
+        Args:
+            year (int): year of season
+            name (str): name of team
+        """
         self.year = year
         self.name = name
         self.condition.wakeAll()
